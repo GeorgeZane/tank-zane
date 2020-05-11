@@ -21,10 +21,10 @@ public class TankFrame extends Frame {
 		setTitle("tank war");
 		// 设置为可见
 		setVisible(true);
-		
-		//添加键盘监听事件
+
+		// 添加键盘监听事件
 		this.addKeyListener(new MyKeyListener());
-		
+
 		// 添加监听器，监听关闭事件
 		addWindowListener(new WindowAdapter() {
 
@@ -43,10 +43,7 @@ public class TankFrame extends Frame {
 	 */
 	@Override
 	public void paint(Graphics g) {
-		System.out.println("paint");
 		g.fillRect(x, y, 50, 50);
-		x += 10;
-		y += 10;
 	}
 
 	/**  
@@ -58,15 +55,54 @@ public class TankFrame extends Frame {
 	 * @version V1.0  
 	 */
 	class MyKeyListener extends KeyAdapter {
+		
+		boolean bL = false;
+		boolean bU = false;
+		boolean bR = false;
+		boolean bD = false;
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			System.out.println("key pressed!");
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				bL = true;
+				break;
+			case KeyEvent.VK_UP:
+				bU = true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				bR = true;
+				break;
+			case KeyEvent.VK_DOWN:
+				bD = true;
+				break;
+
+			default:
+				break;
+			}
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			System.out.println("key released!");
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				bL = false;
+				break;
+			case KeyEvent.VK_UP:
+				bU = false;
+				break;
+			case KeyEvent.VK_RIGHT:
+				bR = false;
+				break;
+			case KeyEvent.VK_DOWN:
+				bD = false;
+				break;
+
+			default:
+				break;
+			}
 		}
 
 	}
